@@ -1,0 +1,15 @@
+---
+- hosts: debian-web
+  vars:
+  remote_user: root
+
+  tasks:
+  - name: Apache2 stop and disable
+    service:
+      name: apache2
+      state: stopped
+      enabled: no
+  - name: Apache2 uninstall
+    apt:
+      name: apache2
+      state: absent

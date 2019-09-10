@@ -1,0 +1,11 @@
+- name: 1. install PHP modules
+  apt: pkg={{ item }} state=installed
+  with_items:
+          - php-fpm
+          - php-gd
+          - php-curl
+          - php-mysql
+          - php-dom
+          - php-xml
+- name: 2. start php-fpm
+  service: name=php7.0-fpm state=started

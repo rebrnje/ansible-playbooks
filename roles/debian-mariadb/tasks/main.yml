@@ -1,0 +1,24 @@
+- name: 1. Update the package repository
+  command: apt update
+
+- name: 2. Install MariaDB
+  apt: pkg={{ item }} state=installed
+  with_items:    
+    - mariadb-server
+    - mariadb-client
+    - python-mysqldb
+
+- name: 3. Start and Enable MariaDB
+  service: name=mariadb state=started enabled=yes
+
+- name: 4. Update MariaDB root password for all root accounts
+  mysql_user: name=root
+              host={{ item }} 
+              password=sb00bDesb0is152InflateDanke
+              login_user=root
+              login_password=""
+              state=present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost

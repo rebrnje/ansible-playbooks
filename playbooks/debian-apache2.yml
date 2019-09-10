@@ -1,0 +1,15 @@
+---
+- hosts: debian-web
+  vars:
+  remote_user: root
+
+  tasks:
+  - name: Apache2 installation (latest version)
+    apt:
+      name: apache2
+      state: latest
+  - name: Apache2 start and enable
+    service:
+      name: apache2
+      state: started
+      enabled: yes
