@@ -8,4 +8,6 @@
           - php-dom
           - php-xml
 - name: 2. start php-fpm
-  service: name=php7.0-fpm state=started
+  service: name=php7.0-fpm state=started enabled=yes
+- name: 3. restart apache2
+  service: name=apache2 state=restarted

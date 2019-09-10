@@ -2,5 +2,5 @@
 - hosts: deb2,deb3
   roles:
           - debian-apache2
-          - debian-php-fpm
           - debian-mariadb
+          - debian-php-fpm
