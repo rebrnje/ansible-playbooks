@@ -1,0 +1,6 @@
+---
+- hosts: stack
+
+  roles:
+          - debian-docker
+          - debian-docker-compose

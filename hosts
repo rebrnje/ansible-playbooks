@@ -18,3 +18,7 @@ cen1
 
 [centos-tools]
 cen1
+
+[docker]
+deb2
+deb3

@@ -1,0 +1,17 @@
+---
+- hosts: debian
+
+  tasks:
+  - name: 1. Update the packages repsitory
+    command: apt update
+
+  - name: 2. Install needed packages
+    apt: pkg={{ item }} state=installed
+    with_items:
+          - htop
+          - open-vm-tools
+          - dstat
+          - vim
+          - git
+          - wget
+

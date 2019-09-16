@@ -1,0 +1,28 @@
+---
+- name: 1. Install dependencies
+  apt: pkg={{ item }} state=installed
+  with_items:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg2
+          - software-properties-common
+
+- name: 2. Add Docker GPG key
+  apt_key:
+          url:  https://download.docker.com/linux/debian/gpg
+
+- name: 3. Add Docker APT repository
+  apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+        state: present
+
+#- name: 4. Update the package repository
+#  apt: update_cache=yes
+
+- name: 5. Docker installation
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
