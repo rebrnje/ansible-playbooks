@@ -2,11 +2,8 @@
 - hosts: debian
 
   tasks:
-  - name: 1. Update the packages repsitory
-    command: apt update
-
-  - name: 2. Install needed packages
-    apt: pkg={{ item }} state=installed
+  - name: 1. Install needed packages & Update repository
+    apt: pkg={{ item }} state=installed update_cache=yes
     with_items:
           - htop
           - open-vm-tools
